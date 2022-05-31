@@ -1,0 +1,7 @@
+name: LiteSMT
+main: xyz.distemi.litesmt.LiteSMT
+version: 1.0
+author: Distemi
+prefix: LSMT
+depend:
+  - PlaceholderAPI

@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+group 'xyz.distemi'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "PaperMC"
+        url = "https://repo.papermc.io/repository/maven-public/"
+    }
+    maven {
+        name = "PlaceholderAPI"
+        url = 'https://repo.extendedclip.com/content/repositories/placeholderapi/'
+    }
+}
+
+dependencies {
+    compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT' // PaperMC
+    compileOnly 'me.clip:placeholderapi:2.11.1' // PlaceholderAPI plugin API
+    compileOnly 'org.projectlombok:lombok:1.18.24' // Lombok API
+    annotationProcessor 'org.projectlombok:lombok:1.18.24' // Lombok processor
+}
+
+task copyToDevEnv_1_16_5() {
+    doLast {
+        copy {
+            from "build/libs/LiteSMT-1.0-SNAPSHOT.jar"
+            into "../test-server1.16.5/plugins/"
+        }
+    }
+}
+
+build.finalizedBy copyToDevEnv_1_16_5
